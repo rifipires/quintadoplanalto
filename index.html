@@ -1,36 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Site com Imagem</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <title>Slideshow Dinâmico</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
 
-        .container {
-            padding: 50px 20px;
-        }
+    .loading {
+      font-size: 2em;
+      color: #0f0;
+      text-align: center;
+      animation: blink 1s infinite;
+      position: absolute;
+      top: 20px;
+      width: 100%;
+    }
 
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
 
-        h1 {
-            color: #333;
-        }
-    </style>
+    .slideshow {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 800px;
+      height: 500px;
+      overflow: hidden;
+      border: 5px solid #0f0;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #0f0;
+    }
+
+    .slides {
+      display: flex;
+      width: 500%;
+      height: 100%;
+      animation: slide 20s infinite;
+    }
+
+    .slides img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    @keyframes slide {
+      0%   { transform: translateX(0%); }
+      20%  { transform: translateX(0%); }
+      25%  { transform: translateX(-100%); }
+      45%  { transform: translateX(-100%); }
+      50%  { transform: translateX(-200%); }
+      70%  { transform: translateX(-200%); }
+      75%  { transform: translateX(-300%); }
+      95%  { transform: translateX(-300%); }
+      100% { transform: translateX(0%); }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Bem-vindo ao meu site!</h1>
-        <img src="Logobeje.jpg" alt="Logo Beja">
+  <div class="loading">loading...</div>
+  <div class="slideshow">
+    <div class="slides">
+      <img src="CAM001.jpg" alt="Foto 1">
+      <img src="CAM002.jpg" alt="Foto 2">
+      <img src="CAM003.jpg" alt="Foto 3">
+      <img src="CAM004.jpg" alt="Foto 4">
+      <img src="CAM008.jpg" alt="Foto 5">
     </div>
+  </div>
 </body>
 </html>
