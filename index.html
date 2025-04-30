@@ -1,57 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <title>Slideshow Fullscreen</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background-color: black;
-    }
+    <meta charset="UTF-8">
+    <title>Slideshow com Mapa</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
 
-    .loading {
-      position: absolute;
-      top: 20px;
-      width: 100%;
-      text-align: center;
-      font-size: 2em;
-      color: #0f0;
-      animation: blink 1s infinite;
-      z-index: 10;
-    }
+    <div class="slideshow-container">
+        <img id="slideshow" src="imagens/CAM001.jpg" alt="Slideshow">
+    </div>
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+    <button onclick="window.open('https://www.google.com/maps/place/Quinta+do+Planalto/@41.4051679,-6.8598559,797m/data=!3m1!1e3!4m6!3m5!1s0xd3bbded51413cb3:0x2141b02514cdb546!8m2!3d41.403675!4d-6.8553715!16s%2Fg%2F11c5bs_25v?entry=ttu&g_ep=EgoyMDI1MDQyNy4xIKXMDSoASAFQAw%3D%3D', '_blank')">
+        Estamos aqui
+    </button>
 
-    .slideshow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
+    <script>
+        const imagens = [
+            'imagens/CAM001.jpg',
+            'imagens/CAM002.jpg',
+            'imagens/CAM003.jpg',
+            'imagens/CAM004.jpg',
+            'imagens/CAM008.jpg'
+        ];
 
-    .slides {
-      display: flex;
-      width: 500%;
-      height: 100%;
-      animation: slide 25s infinite;
-    }
+        let index = 0;
+        const slideshow = document.getElementById('slideshow');
 
-    .slides img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+        setInterval(() => {
+            index = (index + 1) % imagens.length;
+            slideshow.src = imagens[index];
+        }, 5000); // 5000ms = 5s
+    </script>
 
-    @keyframes slide {
-      0%    { transform: translateX(0%); }
-      20%   { transform: translateX(0%); }
-      25%   { transform: translateX(-100%); }
-      45%   { transform: translateX(-100%); }
+</body>
+</html>
+
